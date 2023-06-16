@@ -25,12 +25,11 @@ jobs:
         pip install pyinstaller
     - name: Build
       run: |
-            python main.py build
             pyinstaller --onefile main.py
 
     - name: Upload artifact
       uses: actions/upload-artifact@v3.1.2
       with:
         name: main
-        path: main.py
+        path: dist\main
         retention-days: 3
