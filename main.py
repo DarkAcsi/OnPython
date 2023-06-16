@@ -1,5 +1,6 @@
 import random
-import PySimpleGUI as pg
+import emoji
+import keyboard
 
 emoji = "😀😃😄😁😆😅😂🤣😊😇🙂🙃😉😌😍😘😗😙😚😋😛😝😜🤪🤨🧐🤓😎🤩😏😒😞😔😟😕🙁😣😖😫😢😩😭😤😠" \
         "😡🤬🤯😳😱😨😰😥😓🤗🤔🤭🤫🤥😶😐😑😬🙄😯😦😧😮😲😴🤤😪😵🤐🤢🤮🤧😷🤒🤕🤑🤠😈👿👹👺🤡💩👻💀" \
@@ -8,21 +9,15 @@ emoji = "😀😃😄😁😆😅😂🤣😊😇🙂🙃😉😌😍😘😗�
 
 def update():
     r = random.choice(emoji)
-    text_elem = window['result']
-    text_elem.update("Результат: {}".format(r))
-    print(r)
+    print(r, r.encode('ascii', 'namereplace').decode()[3:-1])
 
 
-layout = [[pg.Button('Новый смайлик', enable_events=True, key='func', font='Helvetica 16')],
-          [pg.Text('Результат:', size=(25, 1), key='result', font='Helvetica 16')]]
+def on_press(key):
+    print(f'Press {key.name}')
 
-window = pg.Window('Генератор случайнго смайлика', layout, size=(350, 100))
+def on_release(key):
+    print(f'Release {key.name}')
 
-while True:
-    event, values = window.read()
-    if event in (pg.WIN_CLOSED, 'Exit'):
-        break
-    if event == 'func':
-        update()
+while input() != 'exit':
+    update()
 
-window.close()
