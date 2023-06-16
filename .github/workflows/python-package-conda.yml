@@ -25,7 +25,7 @@ jobs:
         pip install pyinstaller
     - name: Build
       run: |
-        pyinstaller --onefile --architectures=x64 main.py
+        pyinstaller --onefile --platform=win32 main.py
         mkdir -p dist
         mv dist/main dist/main.exe
   
