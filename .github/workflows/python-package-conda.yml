@@ -21,7 +21,7 @@ jobs:
           python-version: '3.10'
     - name: Build
         run:|
-            python setup.py buid
+            python setup.py build
         
         
     - name: Build with Maven
