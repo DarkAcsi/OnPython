@@ -14,9 +14,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v2
     - name: Set up Python
-      uses: actions/setup-python@v3.1.4
+      uses: actions/setup-python@v2
       with:
           python-version: '3.10'
     - name: Install dependencies
@@ -25,12 +25,11 @@ jobs:
         pip install pysimplegui
     - name: Install xorg-server-utils
       run: |
-        sudo add-apt-repository universe
         sudo apt-get update
-        sudo apt-get install xorg-server-utils
+        sudo apt-get install -y xvfb
     - name: Build
       run: |
-        xorg-server-utils-run python main.py build
+        xvfb-run python main.py build
 
     - name: print env
       run: ls ~ 
