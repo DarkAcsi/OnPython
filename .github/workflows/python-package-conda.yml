@@ -25,15 +25,14 @@ jobs:
 #         pip install -r requirements.txt
     - name: Build
         run:|
-            python setup.py build
+            python main.py build
 
-#     - name: print env
-#       run: ls ~ 
+    - name: print env
+      run: ls ~ 
 
-#     - name: Upload artifact
-#       uses: actions/upload-artifact@v3.1.4
-# #       uses: actions/upload-artifact@v3.1.2
-#       with:
-#         name: SimpleApp
-#         path: target/*.exe
-#         retention-days: 3
+    - name: Upload artifact
+      uses: actions/upload-artifact@v3.1.2
+      with:
+        name: main
+        path: target/*.py
+        retention-days: 3
