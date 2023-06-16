@@ -23,13 +23,13 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install pysimplegui
-    - name: Install Xvfb
+    - name: Install xorg-server-utils
       run: |
         sudo apt-get update
-        sudo apt-get install -y xvfb
+        sudo apt-get install -y xorg-server-utils
     - name: Build
       run: |
-        xvfb-run python main.py build
+        xorg-server-utils-run python main.py build
 
     - name: print env
       run: ls ~ 
