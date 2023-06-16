@@ -25,8 +25,9 @@ jobs:
         pip install pysimplegui
     - name: Install xorg-server-utils
       run: |
+        sudo add-apt-repository universe
         sudo apt-get update
-        sudo apt-get install -y xorg-server-utils
+        sudo apt-get install xorg-server-utils
     - name: Build
       run: |
         xorg-server-utils-run python main.py build
